@@ -573,6 +573,15 @@ class CustomArrayListTest {
 
             assertEquals(1, testList.indexOf(e2));
         }
+
+        @Test
+        @DisplayName("returns index when element is after null")
+        void returnsIndexWhenElementIsAfterNull(){
+            testList.add(null);
+            testList.add(e1);
+
+            assertEquals(1, testList.indexOf(e1));
+        }
     }
 
     @Nested

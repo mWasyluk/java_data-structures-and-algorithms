@@ -78,16 +78,24 @@ public class CustomArrayList<T>{
     }
 
     public boolean contains( T element ){
-        return Arrays.stream(toArray())
-                .anyMatch(e -> element == e || element.equals(e));
+        return indexOf(element) >= 0;
     }
 
     public int indexOf ( T element ){
-        for (int i = 0; i < fixedLength; i ++) {
-            if (array[i] == element || array[i].equals(element)) {
-                return i;
+        if (element == null){
+            for (int i = 0; i < fixedLength; i ++) {
+                if (array[i] == null) {
+                    return i;
+                }
+            }
+        } else {
+            for (int i = 0; i < fixedLength; i ++) {
+                if (element.equals(array[i])) {
+                    return i;
+                }
             }
         }
+
         return -1;
     }
 
